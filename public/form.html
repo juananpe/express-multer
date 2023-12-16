@@ -2,12 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Erabiltzaileak</title>
+    <script src="/routes/users.js"></script> <!--no lo se-->
 </head>
 <body>
-<form action="/profile" method="post" enctype="multipart/form-data">
-    <input type="file" name="avatar"/>
-    <input type="submit">
-</form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Avatar</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+
+    </tbody>
+  </table>
+  <form action="/profile" method="post" enctype="multipart/form-data">
+      <input type="text" id="izena" name="izena" placeholder="Sartu zure izena" required/>
+      <input type="text" id="abizena" name="abizena" placeholder="Abizena" required>
+      <input type="file" name="avatar"/>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="submit">
+  </form>
 </body>
 </html>
