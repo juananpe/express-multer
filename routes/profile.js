@@ -42,9 +42,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', upload.single('avatar'), function (req, res, next) {
-    console.log(req.file)
-    console.log('Zure izena: ' + req.body.izena +'. Fitxategia: https://localhost:3000/uploads/' + req.file.originalname)
-    res.send("Jasota")
+    //console.log(req.file)
+    res.send('Zure izena: ' + req.body.izena +'. Fitxategia: http://localhost:3000/uploads/' + req.file.originalname)
+    //res.send("Jasota")
+    //res.send("http://localhost:3000/uploads/" + req.file.originalname);
 })
 
 module.exports = router;
