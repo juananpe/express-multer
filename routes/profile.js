@@ -35,6 +35,7 @@ const upload = multer({ storage: storage,
                         fileFilter: fileFilter
                       })
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.redirect('form.html');
@@ -42,8 +43,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', upload.single('avatar'), function (req, res, next) {
     console.log(req.file)
-    console.log('Zure izena: ' + req.body.izena +'. Fitxategia: https://localhost:3000/uploads' + file.orginalname)
-    // req.body will hold the text fields, if there were any
+    console.log('Zure izena: ' + req.body.izena +'. Fitxategia: https://localhost:3000/uploads/' + req.file.originalname)
     res.send("Jasota")
 })
 

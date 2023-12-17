@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var profileRouter = require('./routes/profile');
 
+const port = 3000
+
 var app = express();
 
 // view engine setup
@@ -19,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/styles/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -41,3 +44,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+app.listen(port, () => console.log(`Zerbitzaria ${port} portuan entzuten`))
