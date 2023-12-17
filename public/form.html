@@ -1,13 +1,76 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Erabiltzaileak</title>
 </head>
 <body>
-<form action="/profile" method="post" enctype="multipart/form-data">
-    <input type="file" name="avatar"/>
-    <input type="submit">
-</form>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Avatar</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+
+    </tbody>
+  </table>
+
+  <form action="/profile" method="post" enctype="multipart/form-data">
+      <input type="text" id="izena" name="izena" placeholder="Sartu zure izena" required/>
+      <input type="text" id="abizena" name="abizena" placeholder="Abizena" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="file" name="avatar"/>
+      <input type="submit">
+  </form>
 </body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Erabiltzaileak</title>
+    <script>
+      function sendData() {
+        // generate a new FormData object with the form data
+        var formData = new FormData(document.forms.namedItem("formularioa"));
+        // fetch post
+        fetch("/profile", {
+          method: "POST",
+          body: formData,
+        })
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            console.log(data);
+          });
+      }
+
+      window.onload = () => {
+        // add event listener on form submit
+        document.forms.namedItem("formularioa").addEventListener(
+          "submit",
+          function (event) {
+            event.preventDefault();
+            sendData();
+          }
+        );
+      };
+    </script>
+  </head>
+  <body>
+    <form method="post" name="formularioa">
+      Izena:
+      <input type="text" name="izena" placeholder="Sartu zure izena" /><br />
+      <input type="file" name="avatar" />
+      <input type="submit" />
+    </form>
+  </body>
 </html>
